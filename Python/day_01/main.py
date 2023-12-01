@@ -18,16 +18,16 @@ def main():
 
     input_file = options.input
 
-    parse_file(input_file)
-
     try:
         output_one = part_one(input_file)
+        print(output_one)
         logging.info(f"Part 1 solution is : {output_one}")
     except NotImplementedError:
         logging.error("The part 1 solution is not implemented yet")
 
     try:
         output_two = part_two(input_file)
+        print(output_two)
         logging.info(f"Part 2 solution is : {output_two}")
     except NotImplementedError:
         logging.error("The part 2 solution is not implemented yet")
@@ -49,7 +49,7 @@ def process_line(line):
     raise NotImplementedError
 
 
-def part_one(file: str) -> str:
+def part_one(input_file: str) -> int:
     """
         Part One Implementation
 
@@ -59,12 +59,24 @@ def part_one(file: str) -> str:
         Output:
             result: Ouput value, usually str or integer
     """
-    raise NotImplementedError
-    result = 0
-    return result
+    a=0
+    b=0
+    c=0
+    with open(input_file) as file:
+        for line in file:
+            first_digit = False
+            for char in line:
+                if char.isdigit() and not first_digit:
+                    a=char
+                    first_digit=True
+                if char.isdigit():
+                    b=char
+            c+= int(f'{a}{b}')
+    return c
 
 
-def part_two(file: str) -> str:
+
+def part_two(input_file: str) -> str:
     """
         Part Two Implementation
 
@@ -74,8 +86,52 @@ def part_two(file: str) -> str:
         Output:
             result(str): Ouput value, usually str or integer
     """
+    a=0
+    b=0
+    c=0
+
+    digit_list = ['1','2','3','4','5','6', '7', '8', '9']
+    letters_list = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+    first_corresponding_dict = {}
+    last_corresponding_dict = {}
+    with open(input_file) as file:
+        for line in file:
+            a=0
+            b=0
+
+            first_corresponding_dict = {}
+            last_corresponding_dict = {}
+            for digit in digit_list:
+                if line.find(digit) >= 0:
+                    first_corresponding_dict[digit] = line.find(digit)
+                if line.rfind(digit) >=0:
+                    last_corresponding_dict[digit] = line.rfind(digit)
+            
+            for letters in letters_list:
+                if line.find(letters) >= 0:
+                    first_corresponding_dict[letters] = line.find(letters)
+                if line.rfind(letters) >=0:
+                    last_corresponding_dict[letters]  = line.rfind(letters)
+            
+            a=min(first_corresponding_dict, key=first_corresponding_dict.get)
+           
+            b=max(last_corresponding_dict, key=last_corresponding_dict.get)
+            
+            if not a.isdigit():
+                a = str(letters_list.index(a) + 1)
+            if not b.isdigit():
+                b = str(letters_list.index(b) + 1)
+            c+= int(f'{a}{b}')
+    
+    return c
+
     raise NotImplementedError
-    result = 0
+    with open(input_file) as file:
+        for line in file:
+            process_line(line)
+
+    result = '0'
     return result
 
 
