@@ -2,7 +2,7 @@
 
 Hi, welcome to my Advent of Code 2023 repository.
 
-I'll probably pickup another language and do this year's advent of code with two languages.
+I'll probably do this year's advent of code with two languages.
 
 The first language I'll use is Python, despite having practiced it for years, I still find myself lacking, especially regarding code quality, documentation, and best practice. I'll work on the Python code in three steps:
 - First is providing a quick and dirty solution to the problem, in order to perform better in the rankings (either the public rankings (but I'm not confident about it) or the private one that I use with my friend (on which I'm cheating a bit because I can start working on it at midnight and I don't have to wake up early to solve it at 6am (UTC+1, Paris), which becomes a liability if I can't solve it under an hour because then I'll need to go to sleep because I usually need to wake up the next day to go to work))
