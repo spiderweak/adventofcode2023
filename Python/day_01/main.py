@@ -32,23 +32,6 @@ def main():
     except NotImplementedError:
         logging.error("The part 2 solution is not implemented yet")
 
-
-def parse_file(input_file):
-    """
-        This is a pre_coded line parser in case it is needed
-    """
-    with open(input_file) as file:
-        for line in file:
-            process_line(line)
-
-
-def process_line(line):
-    """
-        This is used to process a single line if necessary
-    """
-    raise NotImplementedError
-
-
 def part_one(input_file: str) -> int:
     """
         Part One Implementation
@@ -91,7 +74,7 @@ def part_two(input_file: str) -> str:
     c=0
 
     digit_list = ['1','2','3','4','5','6', '7', '8', '9']
-    letters_list = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    letters_list = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
     first_corresponding_dict = {}
     last_corresponding_dict = {}
@@ -119,20 +102,13 @@ def part_two(input_file: str) -> str:
             b=max(last_corresponding_dict, key=last_corresponding_dict.get)
             
             if not a.isdigit():
-                a = str(letters_list.index(a) + 1)
+                a = str(letters_list.index(a))
             if not b.isdigit():
-                b = str(letters_list.index(b) + 1)
+                b = str(letters_list.index(b))
             c+= int(f'{a}{b}')
     
     return c
 
-    raise NotImplementedError
-    with open(input_file) as file:
-        for line in file:
-            process_line(line)
-
-    result = '0'
-    return result
 
 
 def parse_args():
