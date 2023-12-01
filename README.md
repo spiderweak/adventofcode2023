@@ -1,92 +1,32 @@
 # AdventOfCode2023
 
+Hi, welcome to my Advent of Code 2023 repository.
 
+I'll probably pickup another language and do this year's advent of code with two languages.
+
+The first language I'll use is Python, despite having practiced it for years, I still find myself lacking, especially regarding code quality, documentation, and best practice. I'll work on the Python code in three steps:
+- First is providing a quick and dirty solution to the problem, in order to perform better in the rankings (either the public rankings (but I'm not confident about it) or the private one that I use with my friend (on which I'm cheating a bit because I can start working on it at midnight and I don't have to wake up early to solve it at 6am (UTC+1, Paris), which becomes a liability if I can't solve it under an hour because then I'll need to go to sleep because I usually need to wake up the next day to go to work))
+- Second will be refining the code, add in commentary, error handling, logging, and everything possible to make some code as clean as possible (I probably stick to single file solution at first because making complex classes to tackle really simple problem seem a bit overkill, but later on, on more difficult problems, having a proper code structure will also matter 
+- Finally, I created a custom GPT : https://chat.openai.com/g/g-7Hxprh2tg-adventofcoach that serves as coach for the event. The GPT is tasked with providing feedback on code quality, documentation, error handling, logging, and provide alternative or more efficient code, it is not provided the problem but instead tasked with hitting me when I'm coding badly, because coding is not telling the computer what to do, it's telling another developper what you want the computer to do.
+
+The other language is not defined yet, because I'll probably not play with it in the first day but probably after the first week of the event (a bit overworked for now) but it will probably be some functional programming using either Elixir or OCamL, or some Rust (because for some reasons most of my friends decided that this would be a Rusty year).
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+This is not really a Getting Started with my code, but rather to present how I am getting started with my Python code.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+As I don't want to lose too much time on file structure but still want to have some quick clean code on my first solution, I developed a skeleton solution under Python/skel/main.py
 
-## Add your files
+This skeleton solution has some input argument parsing, raises notImplementedErrors on non implemented part_one or part_two functions (error that are then catched in the main() part of the program so that the program does not crash encountering them, especially considering the way the problems are provided). There is also a quick and dirty way to parse the input file line by line, because it'is usually what we're asked to do in the firsts few puzzles, the functions are not used for now but I keep them on hand in the (most likely) case I'll need them quickly to lose less time during the firsts days.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Licensing
 
-```
-cd existing_repo
-git remote add origin https://gitlab.beyond-undefined.fr/spiderweak/adventofcode2023.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.beyond-undefined.fr/spiderweak/adventofcode2023/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Pretty much all my code is usually under CC BY-NC-SA
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+No need to contribute, especially considering this repo is just mirroring my private GitLab server's repository.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Acknowledgement
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+I'll probably put some links around here to the repositories that my friends are using.
