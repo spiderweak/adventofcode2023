@@ -13,6 +13,8 @@ def main():
 
         The default function is getting the puzzle, trying to out
     """
+    logging.basicConfig(level=logging.INFO)
+
     options = parse_args()
 
     input_file = options.input
@@ -48,7 +50,7 @@ def process_line(line):
     raise NotImplementedError
 
 
-def part_one(file: str) -> str:
+def part_one(file: str) -> int:
     """
         Part One Implementation
 
@@ -59,11 +61,9 @@ def part_one(file: str) -> str:
             result: Ouput value, usually str or integer
     """
     raise NotImplementedError
-    result = 0
-    return result
 
 
-def part_two(file: str) -> str:
+def part_two(file: str) -> int:
     """
         Part Two Implementation
 
@@ -74,8 +74,6 @@ def part_two(file: str) -> str:
             result(str): Ouput value, usually str or integer
     """
     raise NotImplementedError
-    result = 0
-    return result
 
 
 def parse_args():
