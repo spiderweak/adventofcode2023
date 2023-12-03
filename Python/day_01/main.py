@@ -14,6 +14,8 @@ def main():
 
         The default function is getting the puzzle, trying to out
     """
+    logging.basicConfig(level=logging.INFO)
+
     options = parse_args()
 
     input_file = options.input
@@ -59,7 +61,7 @@ def part_one(input_file: str) -> int:
 
 
 
-def part_two(input_file: str) -> str:
+def part_two(input_file: str) -> int:
     """
         Part Two Implementation
 
@@ -90,16 +92,16 @@ def part_two(input_file: str) -> str:
                     first_corresponding_dict[digit] = line.find(digit)
                 if line.rfind(digit) >=0:
                     last_corresponding_dict[digit] = line.rfind(digit)
-            
+
             for letters in letters_list:
                 if line.find(letters) >= 0:
                     first_corresponding_dict[letters] = line.find(letters)
                 if line.rfind(letters) >=0:
                     last_corresponding_dict[letters]  = line.rfind(letters)
             
-            a=min(first_corresponding_dict, key=first_corresponding_dict.get)
+            a=min(first_corresponding_dict, key=first_corresponding_dict.get) # type: ignore
            
-            b=max(last_corresponding_dict, key=last_corresponding_dict.get)
+            b=max(last_corresponding_dict, key=last_corresponding_dict.get)# type: ignore
             
             if not a.isdigit():
                 a = str(letters_list.index(a))
