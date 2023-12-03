@@ -31,14 +31,37 @@ def main():
     except NotImplementedError:
         logging.error("The part 2 solution is not implemented yet")
 
+def parse_game(game_line: str) -> dict:
+    """
+        Converts a line describing a round to a dictionary
+    """
+    [game,content] = game_line.split(':')
+
+    game_id = int(game[5:])
+
+    content = content[:-1].split(':') # gets rid of the \n and split each round in list
+
+    rounds = []
+
+    for round in content[0].split(';'):
+        elements = round.split(',')
+        data = {}
+        for element in elements:
+            [value, color] = element[1:].split(' ')
+            data[color] = data.get(color, 0) + int(value)
+        rounds.append(data)
+
+    return {"game_id": game_id,
+            "rounds": rounds}
 
 
-def part_one(input_file: str) -> str:
+
+def part_one(input_file: str) -> int:
     """
         Part One Implementation
 
         Input:
-            file(str): Input file path
+            input_file(str): Input file path
 
         Output:
             result: Ouput value, usually str or integer
@@ -47,22 +70,15 @@ def part_one(input_file: str) -> str:
     output = 0
     with open(input_file) as file:
         for line in file:
-            error = False
-            data = line.split(':')
-            data = [data[0]] + data[1][:-1].split(';') # gets rid of the \n and split each round in list
-            #    Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?
-            game_id = int(data[0][5:])
-
-            for round in data[1:]:
-                elements = round.split(',')
-                for element in elements:
-                    [value, color] = element[1:].split(' ')
-                    if MAX_COLOR_VALUE[color] < int(value):
-                        error = True
-
-            if not error:
-                output += game_id
-
+            game = parse_game(line)
+            try:
+                for round in game['rounds']:
+                    for k,v in round.items():
+                        if v>MAX_COLOR_VALUE[k]:
+                            raise ValueError
+                output += game['game_id']
+            except ValueError:
+                pass
     return output
 
 
@@ -80,25 +96,16 @@ def part_two(input_file: str) -> int:
     with open(input_file) as file:
         for line in file:
             MAX_COLOR_VALUE = {'red': 0, 'green': 0, 'blue': 0}
-            data = line.split(':')
-            data = [data[0]] + data[1][:-1].split(';') # gets rid of the \n and split each round in list
-            #    Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?
-            game_id = int(data[0][5:])
-
-            for round in data[1:]:
-                elements = round.split(',')
-                for element in elements:
-                    [value, color] = element[1:].split(' ')
+            game = parse_game(line)
+            for round in game['rounds']:
+                for color,value in round.items():
                     if MAX_COLOR_VALUE[color] < int(value):
                         MAX_COLOR_VALUE[color] = int(value)
-
             temp_output = 1
             for k,v in MAX_COLOR_VALUE.items():
                 temp_output = temp_output*v
 
             output+=temp_output
-
-
     return output
 
 
