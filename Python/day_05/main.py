@@ -28,7 +28,7 @@ def main():
 
     try:
         output_two = part_two(input_file)
-        logging.info(f"Part 2 solution is : {output_two}")
+        logging.info(f"Part 2 solution is : {min(output_two)[0]}")
     except NotImplementedError:
         logging.error("The part 2 solution is not implemented yet")
 
@@ -214,10 +214,10 @@ def part_two(input_file: str):
             humidity_to_location[ (int(humidity),int(humidity) + int(number))] = int(location) # type:ignore
             line = file.readline()
 
+        output = list()
         #output.append(humidity_to_location[temperature_to_humidity[light_to_temperature[water_to_light[fertilizer_to_water[soil_to_fertilizer[seed_to_soil[seed]]]]]]])
         for dictionary in seed_to_soil, soil_to_fertilizer, fertilizer_to_water, water_to_light, light_to_temperature, temperature_to_humidity, humidity_to_location:
             output = list()
-            print(f"{seeds} to {dictionary}")
             while seeds:
                 start, end = seeds.pop()
                 no_match = True
@@ -253,7 +253,6 @@ def part_two(input_file: str):
                     output.append((start, end))
             seeds = output
 
-        print(min(output))
         return output
 
 
