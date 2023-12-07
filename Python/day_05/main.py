@@ -6,6 +6,7 @@
 
 import argparse
 import logging
+import time
 
 def main():
     """
@@ -21,14 +22,18 @@ def main():
 
 
     try:
+        t1_start = time.process_time()
         output_one = part_one(input_file)
-        logging.info(f"Part 1 solution is : {min(output_one)}")
+        t1_stop = time.process_time()
+        logging.info(f"Part 1 solution is : {min(output_one)}, processed in {t1_stop - t1_start} s")
     except NotImplementedError:
         logging.error("The part 1 solution is not implemented yet")
 
     try:
+        t1_start = time.process_time()
         output_two = part_two(input_file)
-        logging.info(f"Part 2 solution is : {min(output_two)[0]}")
+        t1_stop = time.process_time()
+        logging.info(f"Part 2 solution is : {min(output_two)[0]}, processed in {t1_stop - t1_start} s")
     except NotImplementedError:
         logging.error("The part 2 solution is not implemented yet")
 
