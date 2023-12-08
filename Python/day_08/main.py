@@ -113,8 +113,6 @@ def part_two(data: list) -> int:
             result(str): Ouput value, usually str or integer
     """
 
-
-    
     pattern = data[0][0]
     graph = dict()
     for line in data[2:]:
@@ -126,7 +124,7 @@ def part_two(data: list) -> int:
         if key.endswith("A"):
             current.append(key)
 
-    
+
     first_exits = []
     for node in current:
         current_node = node
@@ -160,6 +158,8 @@ def keepgoing(current):
     return False
 
     """
+def keepgoing(current, cycle=0):
+
     Analysis implementation
 
     stop = []
