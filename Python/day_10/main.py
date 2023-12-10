@@ -225,12 +225,11 @@ def part_two(data, graph_data) -> float:
         Output:
             result(str): Ouput value, usually str or integer
     """
-    S = []
     d = []
     for c in nx.connected_components(graph_data):
         if (100,52) in c:
-            S.append(graph_data.subgraph(c).copy())
             d = c
+            break
 
     matrix = []
 
